@@ -33,5 +33,4 @@ tf$config$experimental$set_memory_growth(device = gpu, enable = TRUE)
 #policy <-tf$keras$mixed_precision$Policy('mixed_float16')
 #tf$keras$mixed_precision$set_global_policy(policy)
 
-
 tf$xla$experimental$jit_scope()

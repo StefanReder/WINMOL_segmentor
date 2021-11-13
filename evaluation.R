@@ -7,16 +7,12 @@ if(stage==1){
 }  
   
 if(stage==2){eval_data <- tibble(
-  img=list.files(paste(tempdir,"TestDS_2/train/",sep=""), full.names=TRUE, pattern="\\.jpeg$"),
-  mask=list.files(paste(tempdir,"TestDS_2/mask/",sep=""), full.names=TRUE, pattern="\\.gif$"))
+  img=list.files(paste(testdir,"train/",sep=""), full.names=TRUE, pattern="\\.jpeg$"),
+  mask=list.files(paste(testdir,"mask/",sep=""), full.names=TRUE, pattern="\\.gif$"))
   eval_set <- create_dataset(eval_data, train=FALSE)
 
 }   
   
-
-
-
-
 score <- model %>% evaluate(eval_set,  batch_size = 4)
 
 batch <- eval_set %>% as_iterator() %>% iter_next()

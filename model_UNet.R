@@ -1,6 +1,6 @@
 
 
-UNet_fast <- function(
+UNet <- function(
   input_shape=c(IMG_width,IMG_height,n_Channels), classes=num_classes){
   
   FLAGS <- flags(
