@@ -38,8 +38,8 @@ gc()
 if (stage==2) {
 registerDoParallel(cl)  
 train_data <- tibble(
-  img=list.files(paste(tempdir,"SpecDS/train/", sep=""), full.names=TRUE, pattern="\\.jpeg$"),
-  mask=list.files(paste(tempdir,"SpecDS/mask/", sep=""), full.names=TRUE, pattern="\\.gif$"))
+  img=list.files(paste(wd,"datasets/SpecDS/train/", sep=""), full.names=TRUE, pattern="\\.jpeg$"),
+  mask=list.files(paste(wd,"datasets/SpecDS/mask/", sep=""), full.names=TRUE, pattern="\\.gif$"))
 train_data <- initial_split(train_data, prop = 0.8)
 
 train_set <- create_dataset(training(train_data), train=TRUE)

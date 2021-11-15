@@ -18,9 +18,9 @@ dataset_name<-'GenDS10'
 test_dataset_name <-'TestDS'
 wd <- './'
 imgdir <- paste(wd,'img/',sep="")
-maskdir <- paste(wd,"datasets",dataset_name,'/mask/',sep="")
-traindir <- paste(wd,"datasets",dataset_name,'/train/',sep="")
-testdir <- paste(wd, "datasets",test_dataset_name,"/",sep="")
+maskdir <- paste(wd,"datasets/",dataset_name,'/mask/',sep="")
+traindir <- paste(wd,"datasets/",dataset_name,'/train/',sep="")
+testdir <- paste(wd, "datasets/",test_dataset_name,"/",sep="")
 checkdir <- paste(wd,'check/',sep="")
 modeldir <- paste(wd,'models/',sep="")
 logdir <-paste(wd,'log/',sep="")
