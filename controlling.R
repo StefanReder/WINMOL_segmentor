@@ -29,7 +29,7 @@ F1Score_loss <- function(y_true, y_pred) {
 ###Optimizer
 
 optimizer <- optimizer_adam(
-  lr = 1e-3,
+  learning_rate = 1e-3,
   beta_1 = 0.9,
   beta_2 = 0.999,
   epsilon = NULL,
