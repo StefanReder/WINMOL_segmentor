@@ -1,26 +1,32 @@
 
 source("environment.R")
 source("model_UNet.R") 
-model <- UNet()
+
 model_name <- "UNet"
 tile_size = 15
+wd <- './'
 inputdir<-paste('D:/OneDrive - Hochschule für nachhaltige Entwicklung Eberswalde/[WINMOL]/GIS/predictions/Raster/clipped/')
 outputdir<-paste(wd,'output/',sep="")
 dataset_name="DS_spruce_2"
+IMG_width=256
+IMG_height=256
+IMG_bit=8
+n_Channels=3
+num_classes=1
 
 img_list <- list.files(inputdir, full.names=TRUE, pattern="\\.tiff$")
 
 "Specify a model path or use the recently trained model"
 model_path=".\\models\\SpecDS_UNet_Mask-RCNN_512_All\\UNet_SpecDS_UNet_Mask-RCNN_512_All_model_2023-02-27_211141.hdf5"
 
-if (is.null(model)){
-  model<-load_model_hdf5(filepath=model_path, compile=FALSE)
-  model_name=strsplit(tail(unlist(strsplit(model_path,split="\\\\")),n=1),split="\\.")[[1]][1]
-  model %>% compile(
+
+model<-load_model_hdf5(filepath=model_path, compile=FALSE)
+model_name=strsplit(tail(unlist(strsplit(model_path,split="\\\\")),n=1),split="\\.")[[1]][1]
+model %>% compile(
    optimizer = optimizer,
-    loss = F1Score_loss,
-    metrics =  list(Precision, Recall, F1Score))
-}
+   loss = F1Score_loss,
+   metrics =  list(Precision, Recall, F1Score))
+
 
 #Batch prediction of the orthomosaics stored in input directory
 for (img2path in img_list) {
